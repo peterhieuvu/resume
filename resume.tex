@@ -2,14 +2,17 @@
 
 \usepackage[margin=.8in]{geometry}   %set margins to 1in
 \usepackage[utf8]{inputenc}     %used to allow utf8 text (resumé)
-\usepackage[outline]{contour}   %used to control the font weight
-\usepackage[dvipsnames]{xcolor} %used to allow for custom colors
-\usepackage{multirow}           %used to allow for multiple row spanning tables
-\usepackage{calc}               %used to allow for calculations
-\usepackage{parcolumns}         %used to allow for dual column text
-\usepackage{xhfill}             %used to allow for more rule control
+
+\usepackage[outline]{contour}   %!used to control the font weight
+\usepackage[dvipsnames]{xcolor} %!used to allow for custom colors
+\usepackage{multirow}           %!used to allow for multiple row spanning tables
+\usepackage{calc}               %!used to allow for calculations
+\usepackage{parcolumns}         %!used to allow for dual column text
+\usepackage{xhfill}             %!used to allow for more rule control
 \usepackage{multicol}           %used to allow for dual column items
-\usepackage{etoolbox}           %used to allow for conditional expressions
+\usepackage{etoolbox}           %!used to allow for conditional expressions
+
+\usepackage{resume}
 
 \usepackage[T1]{fontenc} %font packages
 \usepackage{lmodern}
@@ -21,98 +24,22 @@
 \pagenumbering{gobble}          %turn off page numbers
 %----------------------------------------------
 
-% --------------- PRE SETTINGS ----------------
-\newtoggle{showPrivate}
-%----------------------------------------------
-
 %------------- DOCUMENT SETTINGS -------------- EDIT HERE
 \definecolor{ColorTitle}{gray}{.4}
 \definecolor{ColorSectionText}{RGB}{70, 85, 110}
 \definecolor{ColorSectionLine}{RGB}{167, 235, 235}
 \setlength{\columnsep}{1cm} %column separation between adjacent sections
 \renewcommand{\labelitemi}{-} %bullet point
-\newcommand{\sectionSpacing}{0mm}
-\newcommand{\sectionIndentRatio}{.15}
-\newcommand{\primaryFont}{lmss}
-\newcommand{\titleFont}{cmss}
-\newcommand{\lineSpacing}{1mm}
+\renewcommand{\sectionSpacing}{0mm}
+\renewcommand{\sectionIndentRatio}{.15}
+\renewcommand{\primaryFont}{lmss}
+\renewcommand{\titleFont}{cmss}
+\renewcommand{\lineSpacing}{1mm}
 \togglefalse{showPrivate}
 %----------------------------------------------
 
 %------------------ COMMANDS ------------------
-%data commands
-\newcommand{\nameField}{ERR!DEFAULT NAME}
-\newcommand{\setName}[1]{
-    \renewcommand{\nameField}{
-        \hspace{-12pt}
-        \contourlength{0.4pt}
-        \contournumber{20}
-        \fontfamily{\titleFont}\fontsize{36}{38}\selectfont
-        \contour{black}{#1}
-        }
-}
-\newcommand{\titleField}{ERR!DEFAULT TITLE}
-\newcommand{\setTitle}[1]{
-    \renewcommand{\titleField}{
-        \fontfamily{\titleFont}\Large\selectfont
-        {\color{ColorTitle}#1}
-        }
-}
-\newcommand{\addressFieldOne}{ERR!DEFAULT ADDRESS1}
-\newcommand{\setAddressOne}[1]{
-    \renewcommand{\addressFieldOne}{#1}
-}
-\newcommand{\addressFieldTwo}{ERR!DEFAULT ADDRESS2}
-\newcommand{\setAddressTwo}[1]{
-    \renewcommand{\addressFieldTwo}{#1}
-}
-\newcommand{\nationField}{ERR!DEFAULT NATION}
-\newcommand{\setNation}[1]{
-    \renewcommand{\nationField}{#1}
-}
-\newcommand{\phoneField}{ERR!DEFAULT PHONE}
-\newcommand{\setPhone}[1]{
-    \renewcommand{\phoneField}{#1}
-}
-\newcommand{\emailField}{ERR!DEFAULT EMAIL}
-\newcommand{\setEmail}[1]{
-    \renewcommand{\emailField}{#1}
-}
 
-%utility commands
-\newcommand{\cbox}[1]{$\vcenter{\hbox{\textrm{#1}}}$} %center box
-\newcommand{\setFont}[1]{\fontfamily{#1}\selectfont}
-
-%private information, first argument is input file for private LaTeX (exclude -private.tex), 
-%second argument is alternate information that is shown if private is unset
-\newcommand{\private}[2]{\iftoggle{showPrivate}{\input{#1-private.tex}}{#2}}
-
-\newcommand{\makeResumeHeader}{
-    \begin{center}
-    \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
-        \multirow{3}{4in}{\nameField}   & \addressFieldOne  \\
-                                        & \addressFieldTwo  \\
-                                        & \nationField      \\
-        \multirow{2}{4in}{\titleField}  & \phoneField       \\
-                                        & \emailField
-    \end{tabular*}
-    \end{center}
-}
-
-\newcommand{\resumeSection}[1]{ 
-    \vspace{\sectionSpacing}
-    {\color{ColorSectionLine}\rule{\widthof{\large#1}}{2pt}}\\
-    {\color{ColorSectionText}\large#1}\\
-    {\color{ColorSectionLine}\xrfill{2mm}[ColorSectionLine]}\\\vspace{-5mm}
-    }
-\newcommand{\resumeEntry}[2]{
-    \begin{parcolumns}[colwidths={1=\sectionIndentRatio\textwidth}, 
-        nofirstindent, distance=1em, rulebetween]{2}
-        \colchunk{\raggedleft#1}
-        \colchunk{\raggedright#2}
-    \end{parcolumns}
-    \vspace{\lineSpacing}
-}
 %----------------------------------------------
 
 %------------------ BASE DATA ----------------- EDIT HERE
@@ -128,7 +55,6 @@
     \setPhone{+1 (123) 456-7890}
     \setEmail{thisisaname@example.ex}
 }
-
 %_---------------------------------------------
     
 \begin{document}
@@ -142,7 +68,7 @@
 \begin{multicols}{2}
     
     \resumeSection{Education}
-    \resumeEntry{2018-Present}{\textbf{University of Washington}; Seattle, WA; 3.92/4.0 GPA; Computer Science}
+    \resumeEntry{2018-2021(exp.)}{\textbf{University of Washington}; Seattle, WA; 3.92/4.0 GPA; Computer Science}
     \resumeEntry{2016-2018}{\textbf{\private{cc}{Some Community College}}; \private{cc-loc}{City, State}; 3.98/4.0 GPA}
     \resumeEntry{2014-2018}{\textbf{\private{hs}{Some High School}}; \private{hs-loc}{City, State}; 3.99/4.0 Unweighted GPA}
     
