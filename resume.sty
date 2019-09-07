@@ -23,7 +23,7 @@
 %-----------------------------------------------
 
 %------------------ COMMANDS ------------------
-%data commands
+%DATA COMMANDS
 \newcommand{\nameField}{ERR!DEFAULT NAME}
 \newcommand{\setName}[1]{
     \renewcommand{\nameField}{
@@ -34,12 +34,13 @@
         \contour{black}{#1}
         }
 }
-\newcommand{\titleField}{ERR!DEFAULT TITLE}
-\newcommand{\setTitle}[1]{
-    \renewcommand{\titleField}{
-        \fontfamily{\titleFont}\Large\selectfont
-        {\color{ColorTitle}#1}
-        }
+\newcommand{\infoFieldOne}{ERR!DEFAULT INFO1}
+\newcommand{\setInfoOne}[1]{
+    \renewcommand{\infoFieldOne}{\color{ColorTitle}#1}
+}
+\newcommand{\infoFieldTwo}{ERR!DEFAULT INFO2}
+\newcommand{\setInfoTwo}[1]{
+    \renewcommand{\infoFieldTwo}{\color{ColorTitle}#1}
 }
 \newcommand{\addressFieldOne}{ERR!DEFAULT ADDRESS1}
 \newcommand{\setAddressOne}[1]{
@@ -62,7 +63,8 @@
     \renewcommand{\emailField}{#1}
 }
 
-%utility commands
+
+%UTILITY COMMANDS
 \newcommand{\cbox}[1]{$\vcenter{\hbox{\textrm{#1}}}$} %center box
 \newcommand{\setFont}[1]{\fontfamily{#1}\selectfont}
 
@@ -70,14 +72,20 @@
 %second argument is alternate information that is shown if private is unset
 \newcommand{\private}[2]{\iftoggle{showPrivate}{\input{#1-private.tex}}{#2}}
 
+%defin
+\newcommand{\newInfoBlock}[2]{\expandafter\newcommand\csname #1InfoBlock\endcsname{#2}}
+\newcommand{\infoBlock}[1]{\expandafter\csname #1InfoBlock\endcsname}
+
+
+%CORE USER COMMANDS
 \newcommand{\makeResumeHeader}{
     \begin{center}
     \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
         \multirow{3}{4in}{\nameField}   & \addressFieldOne  \\
                                         & \addressFieldTwo  \\
                                         & \nationField      \\
-        \multirow{2}{4in}{\titleField}  & \phoneField       \\
-                                        & \emailField
+        \infoFieldOne                   & \phoneField       \\
+        \infoFieldTwo                   & \emailField
     \end{tabular*}
     \end{center}
 }

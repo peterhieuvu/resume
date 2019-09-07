@@ -12,7 +12,7 @@
 \usepackage{multicol}           %used to allow for dual column items
 \usepackage{etoolbox}           %!used to allow for conditional expressions
 
-\usepackage{resume}
+\usepackage{resume} %core code for the templates, see in resume.sty
 
 \usepackage[T1]{fontenc} %font packages
 \usepackage{lmodern}
@@ -25,7 +25,7 @@
 %----------------------------------------------
 
 %------------- DOCUMENT SETTINGS -------------- EDIT HERE
-\definecolor{ColorTitle}{gray}{.4}
+\definecolor{ColorTitle}{gray}{0}
 \definecolor{ColorSectionText}{RGB}{70, 85, 110}
 \definecolor{ColorSectionLine}{RGB}{167, 235, 235}
 \setlength{\columnsep}{1cm} %column separation between adjacent sections
@@ -35,19 +35,34 @@
 \renewcommand{\primaryFont}{lmss}
 \renewcommand{\titleFont}{cmss}
 \renewcommand{\lineSpacing}{1mm}
-\togglefalse{showPrivate}
+\togglefalse{showPrivate} %whether or not to show private information
 %----------------------------------------------
 
 %------------------ COMMANDS ------------------
 
+%\private{X}{Y}
+%---X is the name of the sensitive data file without extension and without "-private" suffix,
+%       that is, "info" will look for "info-private.tex"
+%---Y is what the true data should be replaced with when the option "showPrivate" is toggled
+%       to false
+%---Note: both the data in the file at X and the data passed in for Y can be any valid LaTeX
+%       Code. That means that it can be more than just plain text
+
+%\newInfoBlock{X}{Y}
+
+%\infoBlock{X}
+
+%\resumeSection{X}
+
+%\resumeEntry{X}{Y}
+
 %----------------------------------------------
 
 %------------------ BASE DATA ----------------- EDIT HERE
-\private{
-    info
-}{
+\private{info}{
     \setName{Your Name Here}
-    \setTitle{Resumé}
+    \setInfoOne{Some link or alternate info}
+    \setInfoTwo{Another link or more info}
     
     \setAddressOne{Street Address}
     \setAddressTwo{City State Zip}
@@ -55,68 +70,82 @@
     \setPhone{+1 (123) 456-7890}
     \setEmail{thisisaname@example.ex}
 }
-%_---------------------------------------------
-    
-\begin{document}
+%----------------------------------------------
 
-\setFont{lmss}
-
-\makeResumeHeader
-
-{\color{ColorSectionText}\rule{\linewidth}{1pt}} %make line 
-
-\begin{multicols}{2}
-    
+%------------------ MAIN INFO ----------------- EDIT HERE
+\newInfoBlock{Education}{
     \resumeSection{Education}
-    \resumeEntry{2018-2021(exp.)}{\textbf{University of Washington}; Seattle, WA; 3.92/4.0 GPA; Computer Science}
+    \resumeEntry{2018-Present}{\textbf{University of Washington}; Seattle, WA; 3.92/4.0 GPA; Computer Science; exp. 2021}
     \resumeEntry{2016-2018}{\textbf{\private{cc}{Some Community College}}; \private{cc-loc}{City, State}; 3.98/4.0 GPA}
     \resumeEntry{2014-2018}{\textbf{\private{hs}{Some High School}}; \private{hs-loc}{City, State}; 3.99/4.0 Unweighted GPA}
-    
-    \columnbreak
+}
 
+\newInfoBlock{Achievements}{
     \resumeSection{Achievements}
     \resumeEntry{2018-2019}{Dean's list, Autumn, Winter, Spring, Annual; UW}
     \resumeEntry{2012, 2014, 2018}{President's Education Academic Award}
     \resumeEntry{2016}{Cyber Patriot State Finalist}
     \resumeEntry{2014}{Code Day Best Application.}
-
-\end{multicols}
-
-\resumeSection{Experience and Activities}
-\resumeEntry{\private{gsoc-year}{Some Year}}{\textbf{\private{gsoc-org}{Some GSoC Org}}\\
-    \textit{Google Summer of Code Student}
-    \begin{itemize}
-        \item Developed infrastructure for harmony playback
-        \item Designed, tested, and implemented algorithms for chord symbol playback
-        \item Wrote weekly blog posts to update users on project progress
-        \item Heavy use of C++, Git, Qt, and GDB
-    \end{itemize}
-}
-\resumeEntry{2018-Present,\\2007-2018}{\textbf{Vietnamese Eucharistic Youth Movement}\\
-    \textit{Youth Leader (Previously Member)}
-    \begin{itemize}
-        \item Passed training camp and application to be a youth leader
-        \item Plan and deliver lessons and attend chapter meetings weekly
-        \item Served as Division Treasurer, managing budgets and money for division events
-    \end{itemize}
 }
 
+\newInfoBlock{Experience}{
+    \resumeSection{Experience and Activities}
+    \resumeEntry{\private{gsoc-year}{Some Year}}{\textbf{\private{gsoc-org}{Some GSoC Org}}\\
+        \textit{Google Summer of Code Student}
+        \begin{itemize}
+            \item Developed infrastructure for harmony playback
+            \item Designed, tested, and implemented algorithms for chord symbol playback
+            \item Wrote weekly blog posts to update users on project progress
+            \item Heavy use of C++, Git, Qt, and GDB
+        \end{itemize}
+    }
+    \resumeEntry{2018-Present,\\2007-2018}{\textbf{Vietnamese Eucharistic Youth Movement}\\
+        \textit{Youth Leader (Previously Member)}
+        \begin{itemize}
+            \item Passed training camp and application to be a youth leader
+            \item Plan and deliver lessons and attend chapter meetings weekly
+            \item Served as Division Treasurer, managing budgets and money for division events
+        \end{itemize}
+    }
+}
 
-%\begin{multicols}{2}
-    
+\newInfoBlock{Skills}{
     \resumeSection{Skills}
     \resumeEntry{Languages}{\textbf{Java, C/C++, Python, LaTeX}\\\textit{Exposure to HTML/CSS, x86 Assembly, Octave/MATLAB}}
     \resumeEntry{Software}{Visual Studio, Qt, Vim, GDB, Eclipse, IntelliJ, Git}
     \resumeEntry{Computer}{Windows, Linux; Excel}
     \resumeEntry{Bilingual}{English, Vietnamese}
+}
 
-%    \columnbreak
-
+\newInfoBlock{Interests}{
     \resumeSection{Interests}
     \resumeEntry{Music}{Piano, Guitar, Voice, Music Theory, Composition}
     \resumeEntry{Athletics}{Tennis, Running, Bodyweight Fitness}
     \resumeEntry{Academics}{Education, Astronomy, Investment Finance, Machine Learning, Optimization}
 
-%\end{multicols}
+}
+%----------------------------------------------
+    
+\begin{document}
+
+    \setFont{lmss}
+
+    \makeResumeHeader
+
+    {\color{ColorSectionText}\rule{\linewidth}{1pt}} %make line 
+
+    %BUILD LAYOUT FROM INFORMATION
+
+    \begin{multicols}{2}
+        \infoBlock{Education}
+        \columnbreak
+        \infoBlock{Achievements}
+    \end{multicols}
+
+    \infoBlock{Experience}
+
+    \infoBlock{Skills}
+
+    \infoBlock{Interests}
 
 \end{document}
