@@ -70,7 +70,7 @@
 
 %private information, first argument is input file for private LaTeX (exclude -private.tex), 
 %second argument is alternate information that is shown if private is unset
-\newcommand{\private}[2]{\iftoggle{showPrivate}{\input{#1-private.tex}}{#2}}
+\newcommand{\private}[2]{\iftoggle{showPrivate}{\input{#1-private.tex}\unskip}{#2}}
 
 %defin
 \newcommand{\newInfoBlock}[2]{\expandafter\newcommand\csname #1InfoBlock\endcsname{#2}}

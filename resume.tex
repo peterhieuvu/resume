@@ -1,6 +1,6 @@
-\documentclass[11pt]{article}
+\documentclass[10pt]{article}
 
-\usepackage[margin=.8in]{geometry}   %set margins to 1in
+\usepackage[margin=.7in]{geometry}   %set margins to 1in
 \usepackage[utf8]{inputenc}     %used to allow utf8 text (resumé)
 
 \usepackage[outline]{contour}   %!used to control the font weight
@@ -28,13 +28,13 @@
 \definecolor{ColorTitle}{gray}{0}
 \definecolor{ColorSectionText}{RGB}{70, 85, 110}
 \definecolor{ColorSectionLine}{RGB}{167, 235, 235}
-\setlength{\columnsep}{1cm} %column separation between adjacent sections
+\setlength{\columnsep}{8mm} %column separation between adjacent sections
 \renewcommand{\labelitemi}{-} %bullet point
 \renewcommand{\sectionSpacing}{0mm}
-\renewcommand{\sectionIndentRatio}{.15}
+\renewcommand{\sectionIndentRatio}{.1}
 \renewcommand{\primaryFont}{lmss}
 \renewcommand{\titleFont}{cmss}
-\renewcommand{\lineSpacing}{1mm}
+\renewcommand{\lineSpacing}{2mm}
 \togglefalse{showPrivate} %whether or not to show private information
 %----------------------------------------------
 
@@ -90,7 +90,7 @@
 
 \newInfoBlock{Experience}{
     \resumeSection{Experience and Activities}
-    \resumeEntry{\private{gsoc-year}{Some Year}}{\textbf{\private{gsoc-org}{Some GSoC Org}}\\
+    \resumeEntry{\private{gsoc-year}{Some Year}}{\textbf{\private{gsoc-org}{Some GSoC Org}}, Remote\\
         \textit{Google Summer of Code Student}
         \begin{itemize}
             \item Developed infrastructure for harmony playback
@@ -99,7 +99,7 @@
             \item Heavy use of C++, Git, Qt, and GDB
         \end{itemize}
     }
-    \resumeEntry{2018-Present,\\2007-2018}{\textbf{Vietnamese Eucharistic Youth Movement}\\
+    \resumeEntry{2018-Present,\\2007-2018}{\textbf{Vietnamese Eucharistic Youth Movement}, \private{tnttloc}{Some Location}\\
         \textit{Youth Leader (Previously Member)}
         \begin{itemize}
             \item Passed training camp and application to be a youth leader
@@ -111,7 +111,7 @@
 
 \newInfoBlock{Skills}{
     \resumeSection{Skills}
-    \resumeEntry{Languages}{\textbf{Java, C/C++, Python, LaTeX}\\\textit{Exposure to HTML/CSS, x86 Assembly, Octave/MATLAB}}
+    \resumeEntry{Languages}{\textbf{Java, C/C++, Python, LaTeX}\\\textit{Exposure to HTML/CSS/Java, x86 Assembly, Octave/MATLAB}}
     \resumeEntry{Software}{Visual Studio, Qt, Vim, GDB, Eclipse, IntelliJ, Git}
     \resumeEntry{Computer}{Windows, Linux; Excel}
     \resumeEntry{Bilingual}{English, Vietnamese}
@@ -122,7 +122,64 @@
     \resumeEntry{Music}{Piano, Guitar, Voice, Music Theory, Composition}
     \resumeEntry{Athletics}{Tennis, Running, Bodyweight Fitness}
     \resumeEntry{Academics}{Education, Astronomy, Investment Finance, Machine Learning, Optimization}
+}
 
+\newInfoBlock{Projects}{
+    \resumeSection{Projects}
+    \resumeEntry{Ongoing}{\textbf{Open Source Contribution}\\
+    \textit{MuseScore}
+    \begin{itemize}
+        \item 15+ merged pull requests
+        \item Active developer in community
+    \end{itemize}
+    }
+    \resumeEntry{Ongoing (Paused)}{\textbf{Open Applied Music Theory}\\
+    \textit{Personal Book}
+    \begin{itemize}
+        \item Written to teach music theory in an applied context
+        \item Uses LaTeX for typesetting and Lilypond/lytex for music notation
+    \end{itemize}
+    }
+
+    \resumeEntry{2018}{\textbf{Jamacarons}\\
+        \textit{Business Website}
+        \begin{itemize}
+            \item Practice website built for a macaron business
+            \item Uses HTML, SASS/CSS, and Javascript
+        \end{itemize}    
+    }
+
+    \resumeEntry{2016}{\textbf{Blossom}\\
+        \textit{Game Engine}
+        \begin{itemize}
+            \item Last of a series of game engines written for learning purposes
+            \item Used Java and LibGDX/LWJGL to allow for rendering with OpenGL
+            \item Implemented input framework, entity component system, game state management
+        \end{itemize}}
+}
+
+\newInfoBlock{Coursework}{
+    \resumeSection{Related Coursework}
+    \resumeEntry{AUT 2019}{\textbf{Deep Learning}\\
+        \textit{University of Washington}
+        %Survey class of neural network implementation and applications
+    }
+    \resumeEntry{AUT 2019}{\textbf{Data Structures and Parallelism}\\
+        \textit{University of Washington}
+        %Covers abstract data types and structures, algorithms, asymptotic analysis, concurrency and synchronization, and parallelism.
+    }
+    \resumeEntry{SUM 2019}{\textbf{Machine Learning}\\
+        \textit{Coursera - Andrew Ng}
+        %Introduction to machine learning including supervised and unsupervised learning, as well as best practices in machine learning design.
+        }
+    \resumeEntry{SPR 2019}{\textbf{The Hardware/Software Interface}\\
+        \textit{University of Washington}
+        %Explore abstraction below modern high level languages, representation, memory management
+    }
+    \resumeEntry{SPR 2019}{\textbf{Foundations of Computing}\\
+        \textit{University of Washington}
+        %Fundamentals of logic, set theory, induction, finite state machines, and computability
+    }
 }
 %----------------------------------------------
     
@@ -133,19 +190,28 @@
     \makeResumeHeader
 
     {\color{ColorSectionText}\rule{\linewidth}{1pt}} %make line 
+    \vspace{-5mm}
 
     %BUILD LAYOUT FROM INFORMATION
 
     \begin{multicols}{2}
         \infoBlock{Education}
+        \infoBlock{Experience}
+        \infoBlock{Coursework}
         \columnbreak
-        \infoBlock{Achievements}
+        \infoBlock{Skills}
+        \infoBlock{Projects}
+        \infoBlock{Interests}
     \end{multicols}
 
-    \infoBlock{Experience}
 
-    \infoBlock{Skills}
-
-    \infoBlock{Interests}
+    \begin{multicols}{2}
+        \columnbreak
+    \end{multicols}
+    
+    %    \infoBlock{Achievements}
+    %\begin{multicols}{2}
+    %    \columnbreak
+    %\end{multicols}
 
 \end{document}
