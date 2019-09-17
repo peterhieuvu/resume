@@ -41,12 +41,6 @@
 %------------------ COMMANDS ------------------
 
 %\private{X}{Y}
-%---X is the name of the sensitive data file without extension and without "-private" suffix,
-%       that is, "info" will look for "info-private.tex"
-%---Y is what the true data should be replaced with when the option "showPrivate" is toggled
-%       to false
-%---Note: both the data in the file at X and the data passed in for Y can be any valid LaTeX
-%       Code. That means that it can be more than just plain text
 
 %\newInfoBlock{X}{Y}
 
@@ -55,6 +49,24 @@
 %\resumeSection{X}
 
 %\resumeEntry{X}{Y}
+
+%----------------- SUPER USER -----------------
+
+%Allow Hiding Address
+\newtoggle{excludeAddress}
+\toggletrue{excludeAddress}
+\iftoggle{excludeAddress}{
+    \renewcommand{\makeResumeHeader}{
+        \begin{center}
+        \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
+            \multirow{3}{4in}{\nameField}   & \phoneField  \\
+                                            & \emailField  \\
+                                            & \infoFieldOne\\
+                                            & \infoFieldTwo
+        \end{tabular*}
+        \end{center}
+    }
+}
 
 %----------------------------------------------
 
@@ -93,10 +105,10 @@
     \resumeEntry{\private{gsoc-year}{Some Year}}{\textbf{\private{gsoc-org}{Some GSoC Org}}, Remote\\
         \textit{Google Summer of Code Student}
         \begin{itemize}
-            \item Developed infrastructure for harmony playback
+            \item Developed infrastructure for harmony playback, allowing for enhanced accessibility and ease of use
             \item Designed, tested, and implemented algorithms for chord symbol playback
             \item Wrote weekly blog posts to update users on project progress
-            \item Heavy use of C++, Git, Qt, and GDB
+            \item Used and gained confidence in C++, Git, Qt, and GDB
         \end{itemize}
     }
     \resumeEntry{2018-Present,\\2007-2018}{\textbf{Vietnamese Eucharistic Youth Movement}, \private{tnttloc}{Some Location}\\
