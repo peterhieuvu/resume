@@ -88,8 +88,8 @@
 \newInfoBlock{Education}{
     \resumeSection{Education}
     \resumeEntry{2018-Present}{\textbf{University of Washington}; Seattle, WA; 3.92/4.0 GPA; Dean's List; Computer Science; exp. 2021}
-    \resumeEntry{2016-2018}{\textbf{\private{cc}{Some Community College}}; \private{cc-loc}{City, State}; 3.98/4.0 GPA}
-    \resumeEntry{2014-2018}{\textbf{\private{hs}{Some High School}}; \private{hs-loc}{City, State}; 3.99/4.0 Unweighted GPA}
+    %\resumeEntry{2016-2018}{\textbf{\private{cc}{Some Community College}}; \private{cc-loc}{City, State}; 3.98/4.0 GPA}
+    %\resumeEntry{2014-2018}{\textbf{\private{hs}{Some High School}}; \private{hs-loc}{City, State}; 3.99/4.0 Unweighted GPA}
 }
 
 \newInfoBlock{Achievements}{
@@ -208,24 +208,26 @@
 
     %BUILD LAYOUT FROM INFORMATION
 
+    %\begin{multicols}{2}
+    %    \infoBlock{Education}
+    %    \infoBlock{Experience}
+    %    \infoBlock{Coursework}
+    %    \columnbreak
+    %    \infoBlock{Skills}
+    %    \infoBlock{Projects}
+    %    \infoBlock{Interests}
+    %\end{multicols}
+
+    \infoBlock{Education}
+    \infoBlock{Experience}
+    
     \begin{multicols}{2}
-        \infoBlock{Education}
-        \infoBlock{Experience}
-        \infoBlock{Coursework}
+        
+        \infoBlock{Projects}
         \columnbreak
         \infoBlock{Skills}
-        \infoBlock{Projects}
-        \infoBlock{Interests}
-    \end{multicols}
+        \infoBlock{Coursework}
 
-
-    \begin{multicols}{2}
-        \columnbreak
     \end{multicols}
-    
-    %    \infoBlock{Achievements}
-    %\begin{multicols}{2}
-    %    \columnbreak
-    %\end{multicols}
 
 \end{document}
