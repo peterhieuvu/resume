@@ -1,6 +1,6 @@
 \documentclass[10pt]{article}
 
-\usepackage[margin=.7in]{geometry}   %set margins to 1in
+\usepackage[margin=.5in]{geometry}   %set margins to 1in
 \usepackage[utf8]{inputenc}     %used to allow utf8 text (resumé)
 
 \usepackage[outline]{contour}   %!used to control the font weight
@@ -87,7 +87,11 @@
 %------------------ MAIN INFO ----------------- EDIT HERE
 \newInfoBlock{Education}{
     \resumeSection{Education}
-    \resumeEntry{2018-Present}{\textbf{University of Washington}; Seattle, WA; 3.92/4.0 GPA; Dean's List; Computer Science; exp. 2021}
+    \resumeEntry{2018-Present}{\textbf{B.S. Computer Science}\\
+    University of Washington - Seattle, WA\\
+    Expected Graduation: June 2021\\
+    GPA: 3.92/4.0, Dean's List\\
+    Relevant Coursework: Deep Learning, Machine Learning (outside UW), Data Structures and Parallelism, Data Management}
     %\resumeEntry{2016-2018}{\textbf{\private{cc}{Some Community College}}; \private{cc-loc}{City, State}; 3.98/4.0 GPA}
     %\resumeEntry{2014-2018}{\textbf{\private{hs}{Some High School}}; \private{hs-loc}{City, State}; 3.99/4.0 Unweighted GPA}
 }
@@ -106,16 +110,17 @@
         \textit{Google Summer of Code Student}
         \begin{itemize}
             \item Developed infrastructure for harmony playback, allowing for enhanced accessibility and ease of use
-            \item Designed, tested, and implemented algorithms for chord symbol playback
-            \item Wrote weekly blog posts to update users on project progress
+            \item Designed, tested, and implemented algorithms for chord symbol playback, using mentor advice and user feedback to guide development
+            \item Wrote weekly blog posts to update users on project progress and demonstrate new features
             \item Used and gained confidence in C++, Git, Qt, and GDB
         \end{itemize}
     }
     \resumeEntry{2018-Present,\\2007-2018}{\textbf{Vietnamese Eucharistic Youth Movement}, \private{tnttloc}{Some Location}\\
         \textit{Youth Leader (Previously Member)}
         \begin{itemize}
-            \item Plan and deliver weekly lessons to classes of students
-            \item Work with other youth leaders to handle logistics and administer events
+            \item Planned and delivered weekly lessons to classes of 8-20 students, attending weekly meetings with other youth leaders to handle chapter logistics
+            \item Trained and certified by national committee to teach classes and manage events
+            \item Helped to administer events with other youth leaders from the chapter level to the regional level for the Pacific Northwest Region
             \item Managed budgets and cash flow for division as 2018 Division Treasurer
         \end{itemize}
     }
@@ -123,7 +128,7 @@
 
 \newInfoBlock{Skills}{
     \resumeSection{Skills}
-    \resumeEntry{Languages}{\textbf{Java, C/C++, Python, LaTeX}\\\textit{Exposure to HTML/CSS/Javascript, x86 Assembly, Octave/MATLAB}}
+    \resumeEntry{Languages}{\textbf{Java, C/C++, Python, LaTeX}\\\textit{Exposure to SQL, HTML/CSS/Javascript, x86 Assembly, Octave/MATLAB}}
     \resumeEntry{Software}{Visual Studio, Qt, Vim, GDB, Eclipse, IntelliJ, Git}
     \resumeEntry{Computer}{Windows, Linux; Excel}
     \resumeEntry{Bilingual}{English, Vietnamese}
@@ -141,23 +146,27 @@
     \resumeEntry{Ongoing}{\textbf{Open Source Contribution}\\
     \textit{MuseScore}
     \begin{itemize}
-        \item 15+ merged pull requests
-        \item Active developer in community
+        \item MuseScore is an Open Source piece of music notation software, used to compose, notate, and engrave music.
+        \item Working with C++, navigated over 1 million lines of code fixing bugs and implementing new features
+        \item Over 27,500 additions written for MuseScore across 20+ pull requests with 15+ merged pull requests
+        \item Gained experience working with developers and users on a large codebase with code reviews and continuous integration
     \end{itemize}
     }
     \resumeEntry{Ongoing (Paused)}{\textbf{Open Applied Music Theory}\\
     \textit{Personal Book}
     \begin{itemize}
-        \item Written to teach music theory in an applied context
-        \item Uses LaTeX for typesetting and Lilypond/lytex for music notation
+        \item Wrote a personal book to teach music theory in an applied setting
+        \item Written in LaTeX for typesetting with Lilypond/lytex for music notation
+        \item Paused project in favor of working on MuseScore with hopes to return
     \end{itemize}
     }
 
     \resumeEntry{2018}{\textbf{Jamacarons}\\
         \textit{Business Website}
         \begin{itemize}
-            \item Practice website built for a macaron business
-            \item Uses HTML, SASS/CSS, and Javascript
+            \item Wrote a website for a macaron Business
+            \item Uses HTML, SASS/CSS, and Javascript for the website which is hosted on GitHub pages at jamacarons.me
+            \item Written with hopes to explore web development
         \end{itemize}    
     }
 
@@ -166,7 +175,7 @@
         \begin{itemize}
             \item Last of a series of game engines written for learning purposes
             \item Used Java and LibGDX/LWJGL to allow for rendering with OpenGL
-            \item Implemented input framework, entity component system, game state management
+            \item Implemented XInput device input framework, entity component system, and game state management
         \end{itemize}}
 }
 
@@ -219,15 +228,12 @@
     %\end{multicols}
 
     \infoBlock{Education}
-    \infoBlock{Experience}
-    
-    \begin{multicols}{2}
-        
-        \infoBlock{Projects}
-        \columnbreak
-        \infoBlock{Skills}
-        \infoBlock{Coursework}
+    %\begin{multicols}{2}
+    %    \columnbreak
+    %    \infoBlock{Skills}
+    %\end{multicols}
 
-    \end{multicols}
+    \infoBlock{Experience}
+    \infoBlock{Projects}
 
 \end{document}
