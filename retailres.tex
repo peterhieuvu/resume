@@ -1,0 +1,178 @@
+\documentclass[10pt]{article}
+
+\usepackage[margin=.5in]{geometry}   %set margins to 1in
+\usepackage[utf8]{inputenc}     %used to allow utf8 text (resumé)
+
+\usepackage[outline]{contour}   %!used to control the font weight
+\usepackage[dvipsnames]{xcolor} %!used to allow for custom colors
+\usepackage{multirow}           %!used to allow for multiple row spanning tables
+\usepackage{calc}               %!used to allow for calculations
+\usepackage{parcolumns}         %!used to allow for dual column text
+\usepackage{xhfill}             %!used to allow for more rule control
+\usepackage{multicol}           %used to allow for dual column items
+\usepackage{etoolbox}           %!used to allow for conditional expressions
+
+\usepackage{resume} %core code for the templates, see in resume.sty
+
+\usepackage[T1]{fontenc} %font packages
+\usepackage{lmodern}
+
+%----------------- PAGE SETUP -----------------
+\setlength{\paperwidth}{8.5in}
+\setlength{\paperheight}{11in}
+\setlength{\parindent}{0pt}     %turn off auto indent
+\pagenumbering{gobble}          %turn off page numbers
+%----------------------------------------------
+
+%------------- DOCUMENT SETTINGS -------------- EDIT HERE
+\definecolor{ColorTitle}{gray}{0}
+\definecolor{ColorSectionText}{RGB}{70, 85, 110}
+\definecolor{ColorSectionLine}{RGB}{45, 70, 110}
+\setlength{\columnsep}{8mm} %column separation between adjacent sections
+\renewcommand{\labelitemi}{-} %bullet point
+\renewcommand{\sectionSpacing}{0mm}
+\renewcommand{\sectionIndentRatio}{.1}
+\renewcommand{\primaryFont}{lmss}
+\renewcommand{\titleFont}{cmss}
+\renewcommand{\lineSpacing}{2mm}
+\togglefalse{showPrivate} %whether or not to show private information
+%----------------------------------------------
+
+%------------------ COMMANDS ------------------
+
+%\private{X}{Y}
+
+%\newInfoBlock{X}{Y}
+
+%\infoBlock{X}
+
+%\resumeSection{X}
+
+%\resumeEntry{X}{Y}
+
+%----------------- SUPER USER -----------------
+
+%Allow Hiding Address
+\newtoggle{excludeAddress}
+\toggletrue{excludeAddress}
+\iftoggle{excludeAddress}{
+    \renewcommand{\makeResumeHeader}{
+        \begin{center}
+        \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
+            \multirow{3}{4in}{\nameField}   & \phoneField  \\
+                                            & \emailField  \\
+                                            & \infoFieldOne\\
+                                            & \infoFieldTwo
+        \end{tabular*}
+        \end{center}
+    }
+}
+
+%----------------------------------------------
+
+%------------------ BASE DATA ----------------- EDIT HERE
+\private{info}{
+    \setName{Your Name Here}
+    \setInfoOne{Some link or alternate info}
+    \setInfoTwo{Another link or more info}
+    
+    \setAddressOne{Street Address}
+    \setAddressTwo{City State Zip}
+    \setNation{Nation}
+    \setPhone{+1 (123) 456-7890}
+    \setEmail{thisisaname@example.ex}
+}
+%----------------------------------------------
+
+%------------------ MAIN INFO ----------------- EDIT HERE
+\newInfoBlock{Education}{
+    \resumeSection{Education}
+    \resumeEntry{2018-Present}{\textbf{B.S. Computer Science}\\
+    University of Washington - Seattle, WA\\
+    Expected Graduation: June 2021\\
+    GPA: 3.92/4.0, Dean's List}
+}
+
+\newInfoBlock{Experience}{
+    \resumeSection{Experience and Activities}
+    \resumeEntry{\private{gsoc-year}{Some Year}}{\textbf{\private{gsoc-org}{Some GSoC Org}}, Remote\\
+        \textit{Google Summer of Code Student}
+        \begin{itemize}
+            \item Developed infrastructure for harmony playback, allowing for enhanced accessibility and ease of use
+            \item Designed, tested, and implemented algorithms for chord symbol playback, using mentor advice and user feedback to guide development
+            \item Wrote weekly blog posts to update users on project progress and demonstrate new features
+        \end{itemize}
+    }
+    \resumeEntry{2018-Present,\\2007-2018}{\textbf{Vietnamese Eucharistic Youth Movement}, \private{tnttloc}{Some Location}\\
+        \textit{Youth Leader (Previously Member)}
+        \begin{itemize}
+            \item Planned and delivered weekly lessons to classes of 8-20 students, attending weekly meetings with other youth leaders to handle chapter logistics
+            \item Trained and certified by national committee to teach classes and manage events
+            \item Helped to administer events with other youth leaders from the chapter level to the Pacific Northwest Region
+            \item Managed budgets and cash flow for division as 2018 Division Treasurer
+        \end{itemize}
+    }
+}
+
+\newInfoBlock{Interests}{
+    \resumeSection{Interests}
+    \resumeEntry{Music}{Piano, Guitar, Voice, Music Theory, Composition}
+    \resumeEntry{Athletics}{Tennis, Running, Bodyweight Fitness}
+    \resumeEntry{Academics}{Education, Astronomy, Investment Finance, Machine Learning, Optimization}
+}
+
+\newInfoBlock{Projects}{
+    \resumeSection{Projects}
+    \resumeEntry{Ongoing}{\textbf{Open Source Contribution}\\
+    \textit{MuseScore}
+    \begin{itemize}
+        \item MuseScore is an Open Source piece of music notation software, used to compose, notate, and engrave music
+        \item Working with C++, navigated over 1 million lines of code fixing bugs and implementing new features
+        \item Wrote over 27,500 additions for MuseScore across 20+ pull requests with 15 merged pull requests
+        \item Gained experience working directly with developers and users to create software 100\% focused on the user 
+    \end{itemize}
+    }
+    \resumeEntry{Ongoing (Paused)}{\textbf{Open Applied Music Theory}\\
+    \textit{Personal Book}
+    \begin{itemize}
+        \item Wrote a personal book to teach music theory in an applied setting
+        \item Written in LaTeX for typesetting with lilypond/lytex for music notation
+        \item Paused project in favor of working on MuseScore with hopes to return
+    \end{itemize}
+    }
+
+    \resumeEntry{2018}{\textbf{Jamacarons}\\
+        \textit{Business Website}
+        \begin{itemize}
+            \item Wrote a website for a macaron business
+            \item Uses HTML, SASS/CSS, and Javascript for the website which is hosted on GitHub pages at jamacarons.me
+            \item Written with hopes to explore web development
+        \end{itemize}    
+    }
+
+    \resumeEntry{2016}{\textbf{Blossom}\\
+        \textit{Game Engine}
+        \begin{itemize}
+            \item Last of a series of game engines written for learning purposes
+            \item Used Java and LibGDX/LWJGL to allow for rendering with OpenGL
+            \item Implemented XInput device input framework, entity component system, and game state management system
+        \end{itemize}}
+}
+
+%----------------------------------------------
+    
+\begin{document}
+
+    \setFont{lmss}
+
+    \makeResumeHeader
+
+    {\color{ColorSectionText}\rule{\linewidth}{1pt}} %make line 
+    \vspace{-5mm}
+
+    %BUILD LAYOUT FROM INFORMATION
+    \infoBlock{Education}
+    \infoBlock{Experience}
+    \infoBlock{Projects}
+
+\end{document}
